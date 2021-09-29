@@ -25,11 +25,13 @@ health<- health_aid_given_percent_of_aid
 names(health)<- str_replace(names(health), "X", "")
 healthaid<- rename(.data=health, Country=ï..country)
 healthaid<- healthaid %>% pivot_longer(!Country, names_to="Year", values_to="count")
-
 ```
+
 ```{r}
-compareaid<- full_join(aidgiven, healthaid, by="Year")%>%kable()
+compareaid<- full_join(aidgiven, healthaid, by="Year")
+compareaid<- rename(.data=compareaid, Country_a=Country.x, aid_given=count.x, Country_ha=Country.y, health_aid=count.y)
 compareaid
+#figure out how to get rid of the first country column
 ```
 
 
