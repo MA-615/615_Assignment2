@@ -29,9 +29,12 @@ healthaid<- healthaid %>% pivot_longer(!Country, names_to="Year", values_to="cou
 
 ```{r}
 compareaid<- full_join(aidgiven, healthaid, by="Year")
-compareaid<- rename(.data=compareaid, Country_a=Country.x, aid_given=count.x, Country_ha=Country.y, health_aid=count.y)
-compareaid
-#figure out how to get rid of the first country column
+compareaid<- rename(.data=compareaid, Country=Country.x, Aid=count.x, Country_ha=Country.y, Health_Percent=count.y)
+compareaid$Country_ha<-NULL
+compareaid%>%kable()
+#figure out better way to get rid of the first country column
 ```
+
+
 
 
