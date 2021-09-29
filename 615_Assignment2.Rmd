@@ -7,7 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'reshape2', 'stringr')
+pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'knitr', 'stringr')
 ```
 
 ```{r}
@@ -18,17 +18,18 @@ names(aid)<- str_replace(names(aid), "X", "")
 #change column name for country
 aidgiven<- rename(.data=aid, Country=ï..country)
 #tidy data
-aidgiven %>% pivot_longer(!Country, names_to ="Year", values_to ="count")
+aidgiven<- aidgiven %>% pivot_longer(!Country, names_to ="Year", values_to ="count")
 
 #repeat with health aid given data
 health<- health_aid_given_percent_of_aid
 names(health)<- str_replace(names(health), "X", "")
 healthaid<- rename(.data=health, Country=ï..country)
-healthaid %>% pivot_longer(!Country, names_to="Year", values_to="count")
+healthaid<- healthaid %>% pivot_longer(!Country, names_to="Year", values_to="count")
 
 ```
 ```{r}
-join_
+compareaid<- full_join(aidgiven, healthaid, by="Year")%>%kable()
+compareaid
 ```
 
 
