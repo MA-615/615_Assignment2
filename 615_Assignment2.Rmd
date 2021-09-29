@@ -1,0 +1,26 @@
+---
+title: "615_Assignment2"
+author: "Lauren Marie"
+date: "9/29/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'reshape2', 'stringr')
+```
+
+```{r}
+aid<- aid_given_2007_us
+#change column names of years
+names(aid)<- str_replace(names(aid), "X", "")
+aidgiven<- rename(.data=aid, Country=ï..country)
+#tidy data
+aidgiven %>% pivot_longer(!Country, names_to ="Year", values_to ="count")
+
+
+                      
+#goal is to have year as a column header with the years as entries below
+
+```
+
