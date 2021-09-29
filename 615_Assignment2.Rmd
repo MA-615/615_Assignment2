@@ -11,16 +11,24 @@ pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'reshape2', 'stringr')
 ```
 
 ```{r}
+#assign data an easier name to call
 aid<- aid_given_2007_us
-#change column names of years
+#change column names of years to not include an X
 names(aid)<- str_replace(names(aid), "X", "")
+#change column name for country
 aidgiven<- rename(.data=aid, Country=ï..country)
 #tidy data
 aidgiven %>% pivot_longer(!Country, names_to ="Year", values_to ="count")
 
-
-                      
-#goal is to have year as a column header with the years as entries below
+#repeat with health aid given data
+health<- health_aid_given_percent_of_aid
+names(health)<- str_replace(names(health), "X", "")
+healthaid<- rename(.data=health, Country=ï..country)
+healthaid %>% pivot_longer(!Country, names_to="Year", values_to="count")
 
 ```
+```{r}
+join_
+```
+
 
