@@ -32,7 +32,6 @@ compareaid<- full_join(aidgiven, healthaid, by="Year")
 compareaid<- rename(.data=compareaid, Country=Country.x, Aid=count.x, Country_ha=Country.y, Health_Percent=count.y)
 compareaid$Country_ha<-NULL
 compareaid%>%kable()
-#figure out better way to get rid of the first country column
 ```
 
 
