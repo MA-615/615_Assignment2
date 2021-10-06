@@ -7,8 +7,9 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'knitr', 'stringr')
+pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'knitr', 'stringr', 'tibble')
 ```
+
 
 ```{r}
 #assign data an easier name to call
@@ -28,11 +29,29 @@ healthaid<- healthaid %>% pivot_longer(!Country, names_to="Year", values_to="cou
 ```
 
 ```{r}
-compareaid<- full_join(aidgiven, healthaid, by="Year")
-compareaid<- rename(.data=compareaid, Country=Country.x, Aid=count.x, Country_ha=Country.y, Health_Percent=count.y)
-compareaid$Country_ha<-NULL
-compareaid%>%kable()
+compareaid<- left_join(aidgiven, healthaid, by=c("Year", "Country"))
 ```
+
+```{r}
+#compareaid<- rename(.data=compareaid, Aid=count.x, Health_Percent=count.y)
+#compareaid$Country_ha<-NULL
+compareaid%>%kable()
+is_tibble(compareaid)
+```
+```{r}
+plot<- function(a,b){
+  {
+    Country<-a
+    data2<- filter(b, Country==a, Year>1996)
+    c<-ggplot(data=data2)+geom_col(aes(x=Year, y=Aid, fill=Health_Percent))+ggtitle(Country)
+    print(c)
+  }
+}
+
+plot("Canada", compareaid)
+```
+
+
 
 
 
