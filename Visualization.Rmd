@@ -7,5 +7,20 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'knitr', 'stringr', 'tibble')
+```
+
+
+```{r}
+plot<- function(a,b){
+  {
+    Country<-a
+    data2<- filter(b, Country==a, Year>1996)
+    c<-ggplot(data=data2)+geom_col(aes(x=Year, y=Aid, fill=Health_Percent))+ggtitle(Country)
+    print(c)
+  }
+}
+
+plot("Canada", compareaid)
 ```
 
