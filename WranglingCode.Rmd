@@ -33,8 +33,8 @@ compareaid<- left_join(aidgiven, healthaid, by=c("Year", "Country"))
 ```
 
 ```{r}
-#compareaid<- rename(.data=compareaid, Aid=count.x, Health_Percent=count.y)
-#compareaid$Country_ha<-NULL
+compareaid<- rename(.data=compareaid, Aid=count.x, Health_Percent=count.y)
+compareaid$Country_ha<-NULL
 compareaid%>%kable()
 is_tibble(compareaid)
 ```

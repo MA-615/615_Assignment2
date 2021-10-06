@@ -19,7 +19,8 @@ healthaid<- healthaid %>% pivot_longer(!Country, names_to="Year", values_to="cou
 
 compareaid<- left_join(aidgiven, healthaid, by=c("Year", "Country"))
 
-#compareaid<- rename(.data=compareaid, Aid=count.x, Health_Percent=count.y)
-#compareaid$Country_ha<-NULL
+compareaid<- rename(.data=compareaid, Aid=count.x, Health_Percent=count.y)
 compareaid%>%kable()
 is_tibble(compareaid)
+
+
