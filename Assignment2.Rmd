@@ -12,13 +12,11 @@ pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'knitr', 'stringr', 'tibble')
 
 # Allocable Aid for Official Development Assistance
 
-```{r, echo=FALSE}
+```{r}
+
 aid<- aid_given_2007_us
-
 names(aid)<- str_replace(names(aid), "X", "")
-
 aidgiven<- rename(.data=aid, Country=ï..country)
-
 aidgiven<- aidgiven %>% pivot_longer(!Country, names_to ="Year", values_to ="count")
 
 health<- health_aid_given_percent_of_aid
@@ -64,3 +62,5 @@ plot("United States", compareaid)
 ```{r}
 plot("Japan", compareaid)
 ```
+
+#### Observations
