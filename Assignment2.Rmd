@@ -39,8 +39,15 @@ plot<- function(a,b){
     print(c)
   }
 }
-
+```
+The data sets we are looking at are aid given from 1966 to 2006 as well as the percentage of that aid that went to health aid.
+I chose to focus on the years 1997-2006 in two of the countries that give the most amount of aid, the United States and Japan. 
+```{r}
 plot("United States", compareaid)
+```
+
+
+```{r}
 plot("Japan", compareaid)
 ```
 

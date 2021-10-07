@@ -13,4 +13,35 @@ plot<- function(a,b){
   }
 }
 
-plot("Canada", compareaid)
+plot("United States", compareaid)
+plot("Japan", compareaid)
+
+#same idea but with a bubble graph instead
+library(viridis)
+plot<- function(a,b){
+  {
+    Country<-a
+    data2<- filter(b, Country==a, Year>1996)
+    c<-ggplot(data=data2)+geom_point(aes(x=Year, y=Aid, size=Health_Percent))+scale_size(range = c(.5, 5), name="Health Aid Percentage")+ggtitle(Country)
+    print(c)
+  }
+}
+
+plot("United States", compareaid)
+plot("Japan", compareaid)
+
+
+
+plot<- function(a,b){
+  {
+    Year<-a
+    data3<- filter(b, Year==a, Year>1996)
+    c<-ggplot(data=data2)+geom_point(aes(x=Year, y=Aid, size=Health_Percent))+scale_size(range = c(.5, 5), name="Health Aid Percentage")+ggtitle(Country)
+    print(c)
+  }
+}
+
+plot("United States", compareaid)
+plot("Japan", compareaid)
+
+
