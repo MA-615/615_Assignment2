@@ -10,8 +10,9 @@ knitr::opts_chunk$set(echo = FALSE)
 pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'knitr', 'stringr', 'tibble')
 ```
 
+# Allocable Aid for Official Development Assistance
 
-```{r}
+```{r, echo=FALSE}
 aid<- aid_given_2007_us
 
 names(aid)<- str_replace(names(aid), "X", "")
@@ -40,20 +41,26 @@ plot<- function(a,b){
   }
 }
 ```
-The data sets we are looking at are aid given from 1966 to 2006 as well as the percentage of that aid that went to health aid.
-I chose to focus on the years 1997-2006 in two of the countries that give the most amount of aid, the United States and Japan. 
+
+The data sets used in this assignment are from [Gapminder](https://www.gapminder.org/data)
+
+**aid_given_2007_us.csv**
+Contains the data for the total amount of allocable aid for official development assistance (ODA) given by the donor countries, expressed in USD.
+
+**health_aid_given_percent_of_aid.csv**
+Contains the data pertaining to the percentage of total allocable aid for official development assistance (ODA) given by the donor countries that has been used in health.
+
+I chose to focus on the years 1997-2006 in two of the countries that give the most amount of aid, the United States and Japan.
+
+## Allocable aid for ODA 1997-2006
+### United States
+
 ```{r}
 plot("United States", compareaid)
 ```
 
+### Japan
 
 ```{r}
 plot("Japan", compareaid)
 ```
-
-
-
-
-
-
-
