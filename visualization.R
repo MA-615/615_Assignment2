@@ -1,5 +1,9 @@
 Visualization
 
+#create a function to filter the data set
+#want to be able to get a specific country and year span
+#fill the bar with the percentage of health aid given that year
+#I chose to look at Canada from 1997 to 2006, the end of data collected
 plot<- function(a,b){
   {
     Country<-a
