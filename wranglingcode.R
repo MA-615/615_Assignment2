@@ -29,4 +29,3 @@ compareaid%>%kable()
 #check that compareaid is tibble
 is_tibble(compareaid)
 
-
