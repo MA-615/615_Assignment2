@@ -11,28 +11,10 @@ pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'knitr', 'stringr', 'tibble', 'readr
 ```
 
 # Allocable Aid for Official Development Assistance
-
 ```{r}
-aid <- read_csv("aid_given_2007_us.csv")
-
-health <- read_csv("health_aid_given_percent_of_aid.csv")
-
-aidgiven<- aid %>% pivot_longer(!country, names_to ="Year", values_to ="count")
-healthaid<- health %>% pivot_longer(!country, names_to="Year", values_to="count")
-
-compareaid<- left_join(aidgiven, healthaid, by=c("Year", "country"))
-
-compareaid<- rename(.data=compareaid, Aid=count.x, Health_Percent=count.y)
-compareaid%>%kable()
-
-plot<- function(a,b){
-  {
-    country<-a
-    data2<- filter(b, country==a, Year>1996)
-    c<-ggplot(data=data2)+geom_col(aes(x=Year, y=Aid, fill=Health_Percent))+ggtitle(country)
-    print(c)
-  }
-}
+source('C:/Users/ltemp/Desktop/MSSP/MA 615/615_Assignment2/wranglingcode.R', echo=FALSE)
+source('C:/Users/ltemp/Desktop/MSSP/MA 615/615_Assignment2/visualization.R', echo=FALSE)
+#figure out how to source these files then you can delete all the copied code below. keep explaination
 ```
 
 The data sets used in this assignment are from [Gapminder](https://www.gapminder.org/data)
@@ -48,14 +30,8 @@ I chose to focus on the years 1997-2006 in two of the countries that give the mo
 ## Allocable aid for ODA 1997-2006
 ### United States
 
-```{r}
-plot("United States", compareaid)
-```
 
 ### Japan
 
-```{r}
-plot("Japan", compareaid)
-```
 
 #### Observations
