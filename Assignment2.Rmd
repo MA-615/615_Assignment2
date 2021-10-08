@@ -11,10 +11,8 @@ pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'knitr', 'stringr', 'tibble', 'readr
 ```
 
 # Allocable Aid for Official Development Assistance
-```{r}
+```{r, echo=FALSE, include=FALSE}
 source('C:/Users/ltemp/Desktop/MSSP/MA 615/615_Assignment2/wranglingcode.R', echo=FALSE)
-source('C:/Users/ltemp/Desktop/MSSP/MA 615/615_Assignment2/visualization.R', echo=FALSE)
-#figure out how to source these files then you can delete all the copied code below. keep explaination
 ```
 
 The data sets used in this assignment are from [Gapminder](https://www.gapminder.org/data)
@@ -27,11 +25,10 @@ Contains the data pertaining to the percentage of total allocable aid for offici
 
 I chose to focus on the years 1997-2006 in two of the countries that give the most amount of aid, the United States and Japan.
 
-## Allocable aid for ODA 1997-2006
-### United States
 
+```{r, echo=FALSE}
+source('C:/Users/ltemp/Desktop/MSSP/MA 615/615_Assignment2/visualization.R', echo=FALSE)
+#figure out how to source these files then you can delete all the copied code below. keep explaination
+```
 
-### Japan
-
-
-#### Observations
+Observations
