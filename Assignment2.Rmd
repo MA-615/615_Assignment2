@@ -12,7 +12,8 @@ pacman::p_load('dplyr', 'ggplot2', 'tidyr', 'knitr', 'stringr', 'tibble', 'readr
 
 # Allocable Aid for Official Development Assistance
 ```{r, echo=FALSE, include=FALSE}
-source('C:/Users/ltemp/Desktop/MSSP/MA 615/615_Assignment2/wranglingcode.R', echo=FALSE)
+#source('C:/Users/ltemp/Desktop/MSSP/MA 615/615_Assignment2/wranglingcode.R', echo=FALSE)
+source(file= 'wranglingcode.R', echo=FALSE)
 ```
 
 The data sets used in this assignment are from [Gapminder](https://www.gapminder.org/data)
@@ -27,7 +28,8 @@ I chose to focus on the years 1997-2006 in two of the countries that give the mo
 
 
 ```{r, echo=FALSE}
-source('C:/Users/ltemp/Desktop/MSSP/MA 615/615_Assignment2/visualization.R', echo=FALSE)
+#source('C:/Users/ltemp/Desktop/MSSP/MA 615/615_Assignment2/visualization.R', echo=FALSE)
+source(file= 'visualization.R', echo=FALSE)
 ```
 
 Observations
