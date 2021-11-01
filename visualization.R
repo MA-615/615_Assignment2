@@ -1,21 +1,23 @@
-#Visualization
-
-#create a function to filter the data set
-#want to be able to get a specific country and year span
-#fill the bar with the percentage of health aid given that year
-#I chose to look at Canada from 1997 to 2006, the end of data collected
-plot<- function(a,b){
-  {
-    country<-a
-    data2<- filter(b, country==a, Year>1996)
-    c<-ggplot(data=data2)+geom_col(aes(x=Year, y=Aid, fill=Health_Percent))+ggtitle(country)
-    print(c)
-  }
+## Modification Note: 
+## creating a new ggplot function, to calculate the share of aid on non-health and health 
+## also to reduce redundant codes 
+## including only function codes in the file 
+ggfun <- function(c, data){
+  data1 <- data %>%
+    mutate(cat = "health")
+  
+  data_extra <- data %>%
+    mutate(Health_Percent = 100-Health_Percent) %>%
+    mutate(cat = "non health")%>%
+    subset(., select = c("country", "Year", "Aid","Health_Percent", "cat"))
+  
+  work_data <- rbind(data1, data_extra)%>%
+    filter(., country == c, Year >1996)
+  
+  p <- ggplot(work_data, 
+              aes(x = Year, y = Health_Percent, fill = cat)) +
+    labs(y = "Share", x = "Year") + 
+    ggtitle(c)
+  
+  return(p)
 }
-
-plot("United States", compareaid)
-plot("Japan", compareaid)
-
-
-
-
